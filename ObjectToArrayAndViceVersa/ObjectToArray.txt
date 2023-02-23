@@ -1,0 +1,15 @@
+=========================== Object to Array ==============================
+
+
+There may be many ways but I found these four ways:
+	There are four ways to convert an Object to an Array ->
+		METHOD 1: Object.values(obj) will return an array of values of the given object
+
+		METHOD 2: Object.entries(obj) will return an array of key-value pairs of the
+		          given object
+		
+		METHOD 3: Object.keys(obj) will return an array of keys of the given object
+		
+		METHOD 4: From Object.keys(obj) we will get an array of keys, from
+				these keys we can generate a new Array with values of the given keys
+			  

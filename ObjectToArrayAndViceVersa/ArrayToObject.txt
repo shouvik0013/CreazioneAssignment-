@@ -1,0 +1,25 @@
+======================== Array to Object ========================
+
+There may be many ways but I found the followings:
+	METHOD1: If the array is in key-value pairs
+			 then we can form a Map object using Map constructor 
+			 like new Map(arr).Then we can pass the returned object
+			 to Object.fromEntries(mapObject) it will return an Object
+			 like {key: value, ....}
+	
+	METHOD2: We can take an empty object then we can loop through
+			 the key-value pair array and assign the key value into 
+			 the empty array like keyValueArr.forEach((elem) => {
+				emptyObj[elem[0]] = elem[1];
+			 })  
+	
+	METHOD3: If the array is one dimensional then we can use
+	         Object.assign(oneDArray, {})
+
+	METHOD4: If the array is one dimensional then we can use
+			 array's built-in method reduce with an empty {} as
+			 initial value. Like -> 
+			 oneDArray.reduce((acc, val, index) => {
+				obj[index] = val;
+				return obj;
+			 }, {})
