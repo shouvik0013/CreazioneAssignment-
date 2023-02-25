@@ -1,2 +1,2 @@
 ### Calculate route check
-GET http://localhost:3000?a=20&b=5&op=div  HTTP/1.1
+GET http://localhost:3000?a=20&b=5&op=sub  HTTP/1.1

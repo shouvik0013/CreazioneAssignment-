@@ -61,7 +61,7 @@ module.exports.checkQueryParams = (req, res, next) => {
 
     if (result.error) {
         const details = result.error.details[0];
-        console.log('Message is ' + details.message);
+        // console.log('Message is ' + details.message);
 
         return ErrorResponse({
             res,
