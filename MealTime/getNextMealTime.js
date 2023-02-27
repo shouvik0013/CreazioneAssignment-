@@ -1,4 +1,4 @@
-let regex = /\b([01]?\d):([0-5]\d)\s*([ap])(?:\.?\s*m\.?|\.?\s*M\.?)/gi;
+let regex = /\b([01]?\d):([0-5]\d)\s*([ap])(\.?\s*m\.?)/im;
 
 function msToTime(timeInMiliseconds) {
     let hours, minutes, seconds;
@@ -23,7 +23,7 @@ function getNextMealTime(currentTime, isDateTimeString = false) {
     if (!isDateTimeString) {
         const timeArray = regex.exec(currentTime);
         if (!timeArray) {
-            return 'Invalid date time string';
+            return '26 Invalid date time string';
         }
         /**
 		 * [
@@ -49,18 +49,18 @@ function getNextMealTime(currentTime, isDateTimeString = false) {
 
         if (cSuffix === 'p' || cSuffix === 'P') {
             if (cHour === 12) {
-                currentDateTime.setHours(12, cMinute);
+                currentDateTime.setHours(12, cMinute, 0);
             } else {
-                currentDateTime.setHours(12 + cHour, cMinute);
+                currentDateTime.setHours(12 + cHour, cMinute, 0);
             }
-            console.log('My Test time: ' + currentDateTime);
+            // console.log('My Test time: ' + currentDateTime);
         } else if (cSuffix === 'a' || cSuffix === 'A') {
             if (cHour === 12) {
-                currentDateTime.setHours(0, cMinute);
+                currentDateTime.setHours(0, cMinute, 0);
             } else {
-                currentDateTime.setHours(cHour, cMinute);
+                currentDateTime.setHours(cHour, cMinute, 0);
             }
-            console.log('My Test time: ' + currentDateTime);
+            // console.log('My Test time: ' + currentDateTime);
         } else {
             return 'Invalid date time string';
         }
@@ -90,7 +90,7 @@ function getNextMealTime(currentTime, isDateTimeString = false) {
     } else if (currentDateTime < dinnerTime) {
         timeDifference = Math.abs(currentDateTime - dinnerTime);
     } else {
-        // ! If it is after dinner, return the next day breakfas time
+        // ! If it is after dinner, return the next day breakfast time
         let nextDay = new Date(currentDateTime);
         nextDay.setDate(nextDay.getDate() + 1);
         console.log('Next day', nextDay);
@@ -112,7 +112,9 @@ function getNextMealTime(currentTime, isDateTimeString = false) {
     return [hours, minutes];
 }
 
-console.log(getNextMealTime('9:00 a.m.'));
+// console.log(getNextMealTime('09:00 AM'));
+console.log(getNextMealTime('6:02 am'));
+console.log(getNextMealTime('09:00 AM'));
 // console.log(getNextMealTime('2023-02-23T15:50:00.545Z', true));
 // console.log(getNextMealTime('2023-02-23T17:30:00.545Z'));
 // console.log(msToTime(810214));
