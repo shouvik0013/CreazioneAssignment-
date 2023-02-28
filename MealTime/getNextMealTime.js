@@ -23,7 +23,7 @@ function getNextMealTime(currentTime, isDateTimeString = false) {
     if (!isDateTimeString) {
         const timeArray = regex.exec(currentTime);
         if (!timeArray) {
-            return '26 Invalid date time string';
+            return 'Invalid time string';
         }
         /**
 		 * [
@@ -42,7 +42,7 @@ function getNextMealTime(currentTime, isDateTimeString = false) {
         let cSuffix = timeArray[3];
 
         if (cHour > 12) {
-            return 'Invalid date time string';
+            return 'Invalid time string';
         }
         // * getting today's date time
         currentDateTime = new Date();
@@ -62,7 +62,7 @@ function getNextMealTime(currentTime, isDateTimeString = false) {
             }
             // console.log('My Test time: ' + currentDateTime);
         } else {
-            return 'Invalid date time string';
+            return 'Invalid time string';
         }
     } else {
         // intact
